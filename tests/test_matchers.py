@@ -4,8 +4,14 @@ from tests.compat import unittest
 
 from xml.etree.ElementTree import Element
 
-from searchtml.matchers import TagElementMatcher,\
+from searchtml.matchers import ElementMatcher, TagElementMatcher,\
     AttributeSubstringTagElementMatcher
+
+
+class TestAbstractBaseClass(unittest.TestCase):
+    def test_doesMatch_not_implemented(self):
+        with self.assertRaises(NotImplementedError):
+            ElementMatcher().doesMatch(Element('a'))
 
 
 class TestTagElementMatcher(unittest.TestCase):
